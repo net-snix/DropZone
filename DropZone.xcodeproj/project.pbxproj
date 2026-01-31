@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F25803624BAFB2D057BC9C5 /* InstantAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98952BA589544D585B48982A /* InstantAction.swift */; };
+		4EE846D46013B9BE64A19D07 /* GlobalHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C93E4C3F6A865E73849F5AB /* GlobalHotKeyManager.swift */; };
+		58EF5555268BE59F9D1969A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73D12D256579032A37A6BA3 /* AppDelegate.swift */; };
+		724CB4299FBF475F199211CD /* ZoneItemFilePromiseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462AEBE5FD99E31F98B6EC1 /* ZoneItemFilePromiseDelegate.swift */; };
+		74710F2BB4D823E99DD4C7B4 /* FileMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C684C7BC8AF3939086DACA3 /* FileMover.swift */; };
+		79653B9A5307208934201A8B /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C3279900B516411B55481B /* Formatters.swift */; };
+		872A19B1CCB28B1496E60DEB /* DragPasteboardReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EA198A793AFF8EEC3A00C3 /* DragPasteboardReader.swift */; };
+		89A13E85E610E0101C756193 /* InstantActionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E743E64B74D360C6099A6 /* InstantActionRunner.swift */; };
+		8D9F03D648304DB94178004E /* ZoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CACC739D8BF6269EE52E0D /* ZoneItem.swift */; };
+		92709E49FBC28764A2AD512C /* PillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A797A62DEC0BA4156D1DA /* PillButtonStyle.swift */; };
+		97728A859A50AA6612E56FB2 /* DropOverlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280DF681482D84A1F6F43A5B /* DropOverlayState.swift */; };
+		B4432E552145563454F955ED /* ActiveWindowLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C527BDB961322BC1B76C0DB /* ActiveWindowLocator.swift */; };
+		B7020856FB51C85A718DDD14 /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82441809C338951854CE0E8C /* ShakeDetector.swift */; };
+		B885255E3DA11485B09A5FFE /* DropBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D39EF4CA14C3EF0CE2D8A7 /* DropBoxView.swift */; };
+		C0EC43238099B52892CBEDF6 /* DragDelegateRetainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FEE976FB7B6077EEE4218B /* DragDelegateRetainer.swift */; };
+		CFC2E8788C2605B5E78BDA81 /* DropBoxItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FE6ED288B76F500E1C138 /* DropBoxItemRow.swift */; };
+		D3FD5560BE527BFECD7105F4 /* DragMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD98501DD07DDA9EB6BB8C /* DragMonitor.swift */; };
+		DBF29CAB5831034880F49CD9 /* ZoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BDF04FD514AA03174E0C3B /* ZoneStore.swift */; };
+		DEC3F3F640596FCDBB3B19CC /* DropOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE2819FBA6DFA056DCCB150 /* DropOverlayController.swift */; };
+		E423163871292D9524E791BD /* DropZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB2605AD682C6357A6A4B1 /* DropZoneApp.swift */; };
+		EBEBE35ABD7A090D1EE3DEAE /* InstantActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF24FB8EE2C5454BEF9A5CC /* InstantActionBar.swift */; };
+		F6AE878F59F04683B4370CFE /* NoiseTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BA01283BACD68A626756A7 /* NoiseTexture.swift */; };
+		FBCBAD94028EC11AEC1D64ED /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EDF9C6B52657628B75D4A /* Palette.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00BA01283BACD68A626756A7 /* NoiseTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseTexture.swift; sourceTree = "<group>"; };
+		10BDF04FD514AA03174E0C3B /* ZoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneStore.swift; sourceTree = "<group>"; };
+		10D39EF4CA14C3EF0CE2D8A7 /* DropBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxView.swift; sourceTree = "<group>"; };
+		280DF681482D84A1F6F43A5B /* DropOverlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropOverlayState.swift; sourceTree = "<group>"; };
+		30C3279900B516411B55481B /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		455FE6ED288B76F500E1C138 /* DropBoxItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxItemRow.swift; sourceTree = "<group>"; };
+		5C684C7BC8AF3939086DACA3 /* FileMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMover.swift; sourceTree = "<group>"; };
+		63CACC739D8BF6269EE52E0D /* ZoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneItem.swift; sourceTree = "<group>"; };
+		647EDF9C6B52657628B75D4A /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		6859CE8F64D4D48F86BF392A /* DropZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C527BDB961322BC1B76C0DB /* ActiveWindowLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWindowLocator.swift; sourceTree = "<group>"; };
+		763E743E64B74D360C6099A6 /* InstantActionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantActionRunner.swift; sourceTree = "<group>"; };
+		78EA198A793AFF8EEC3A00C3 /* DragPasteboardReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPasteboardReader.swift; sourceTree = "<group>"; };
+		7C93E4C3F6A865E73849F5AB /* GlobalHotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHotKeyManager.swift; sourceTree = "<group>"; };
+		82441809C338951854CE0E8C /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
+		851A797A62DEC0BA4156D1DA /* PillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButtonStyle.swift; sourceTree = "<group>"; };
+		90D9AB6FA67F64D114FA2216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9462AEBE5FD99E31F98B6EC1 /* ZoneItemFilePromiseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneItemFilePromiseDelegate.swift; sourceTree = "<group>"; };
+		95AD98501DD07DDA9EB6BB8C /* DragMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragMonitor.swift; sourceTree = "<group>"; };
+		98952BA589544D585B48982A /* InstantAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantAction.swift; sourceTree = "<group>"; };
+		B9FEE976FB7B6077EEE4218B /* DragDelegateRetainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDelegateRetainer.swift; sourceTree = "<group>"; };
+		CFF24FB8EE2C5454BEF9A5CC /* InstantActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantActionBar.swift; sourceTree = "<group>"; };
+		D73D12D256579032A37A6BA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ECE2819FBA6DFA056DCCB150 /* DropOverlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropOverlayController.swift; sourceTree = "<group>"; };
+		F4FB2605AD682C6357A6A4B1 /* DropZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropZoneApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		02A3509C239163E77B4BB315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				455FE6ED288B76F500E1C138 /* DropBoxItemRow.swift */,
+				10D39EF4CA14C3EF0CE2D8A7 /* DropBoxView.swift */,
+				CFF24FB8EE2C5454BEF9A5CC /* InstantActionBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		05A6BA38F6AE260592E67B29 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6C527BDB961322BC1B76C0DB /* ActiveWindowLocator.swift */,
+				D73D12D256579032A37A6BA3 /* AppDelegate.swift */,
+				95AD98501DD07DDA9EB6BB8C /* DragMonitor.swift */,
+				ECE2819FBA6DFA056DCCB150 /* DropOverlayController.swift */,
+				F4FB2605AD682C6357A6A4B1 /* DropZoneApp.swift */,
+				7C93E4C3F6A865E73849F5AB /* GlobalHotKeyManager.swift */,
+				82441809C338951854CE0E8C /* ShakeDetector.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3110F06DB35A1A27814D91A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6859CE8F64D4D48F86BF392A /* DropZone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7878C735E4EBBFAFE48F8922 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B9FEE976FB7B6077EEE4218B /* DragDelegateRetainer.swift */,
+				78EA198A793AFF8EEC3A00C3 /* DragPasteboardReader.swift */,
+				5C684C7BC8AF3939086DACA3 /* FileMover.swift */,
+				30C3279900B516411B55481B /* Formatters.swift */,
+				763E743E64B74D360C6099A6 /* InstantActionRunner.swift */,
+				00BA01283BACD68A626756A7 /* NoiseTexture.swift */,
+				647EDF9C6B52657628B75D4A /* Palette.swift */,
+				851A797A62DEC0BA4156D1DA /* PillButtonStyle.swift */,
+				9462AEBE5FD99E31F98B6EC1 /* ZoneItemFilePromiseDelegate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		78F21D2305E45382E7907FE6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				90D9AB6FA67F64D114FA2216 /* Info.plist */,
+				05A6BA38F6AE260592E67B29 /* App */,
+				A7ACE615D145610B3EE867BF /* Models */,
+				7878C735E4EBBFAFE48F8922 /* Utils */,
+				02A3509C239163E77B4BB315 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A7ACE615D145610B3EE867BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				280DF681482D84A1F6F43A5B /* DropOverlayState.swift */,
+				98952BA589544D585B48982A /* InstantAction.swift */,
+				63CACC739D8BF6269EE52E0D /* ZoneItem.swift */,
+				10BDF04FD514AA03174E0C3B /* ZoneStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2A9E6134CC392476AD2DC97 = {
+			isa = PBXGroup;
+			children = (
+				78F21D2305E45382E7907FE6 /* Sources */,
+				3110F06DB35A1A27814D91A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		070EE485E85E2DAE8ACA7173 /* DropZone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E554661FC9D0F847C108563D /* Build configuration list for PBXNativeTarget "DropZone" */;
+			buildPhases = (
+				E88E9F76B048682DC98AFC4B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropZone;
+			packageProductDependencies = (
+			);
+			productName = DropZone;
+			productReference = 6859CE8F64D4D48F86BF392A /* DropZone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		812B14C1A3060A3A81AF9704 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 2BF40729C7864BEBE0628A23 /* Build configuration list for PBXProject "DropZone" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C2A9E6134CC392476AD2DC97;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				070EE485E85E2DAE8ACA7173 /* DropZone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E88E9F76B048682DC98AFC4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4432E552145563454F955ED /* ActiveWindowLocator.swift in Sources */,
+				58EF5555268BE59F9D1969A2 /* AppDelegate.swift in Sources */,
+				C0EC43238099B52892CBEDF6 /* DragDelegateRetainer.swift in Sources */,
+				D3FD5560BE527BFECD7105F4 /* DragMonitor.swift in Sources */,
+				872A19B1CCB28B1496E60DEB /* DragPasteboardReader.swift in Sources */,
+				CFC2E8788C2605B5E78BDA81 /* DropBoxItemRow.swift in Sources */,
+				B885255E3DA11485B09A5FFE /* DropBoxView.swift in Sources */,
+				DEC3F3F640596FCDBB3B19CC /* DropOverlayController.swift in Sources */,
+				97728A859A50AA6612E56FB2 /* DropOverlayState.swift in Sources */,
+				E423163871292D9524E791BD /* DropZoneApp.swift in Sources */,
+				74710F2BB4D823E99DD4C7B4 /* FileMover.swift in Sources */,
+				79653B9A5307208934201A8B /* Formatters.swift in Sources */,
+				4EE846D46013B9BE64A19D07 /* GlobalHotKeyManager.swift in Sources */,
+				2F25803624BAFB2D057BC9C5 /* InstantAction.swift in Sources */,
+				EBEBE35ABD7A090D1EE3DEAE /* InstantActionBar.swift in Sources */,
+				89A13E85E610E0101C756193 /* InstantActionRunner.swift in Sources */,
+				F6AE878F59F04683B4370CFE /* NoiseTexture.swift in Sources */,
+				FBCBAD94028EC11AEC1D64ED /* Palette.swift in Sources */,
+				92709E49FBC28764A2AD512C /* PillButtonStyle.swift in Sources */,
+				B7020856FB51C85A718DDD14 /* ShakeDetector.swift in Sources */,
+				8D9F03D648304DB94178004E /* ZoneItem.swift in Sources */,
+				724CB4299FBF475F199211CD /* ZoneItemFilePromiseDelegate.swift in Sources */,
+				DBF29CAB5831034880F49CD9 /* ZoneStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		42B99294B1C557D18B912B31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.net-snix.DropZone";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		88EDF4490E5D92020D3C9AC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.1;
+			};
+			name = Release;
+		};
+		A261DE7A3B1166D559E309CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.1;
+			};
+			name = Debug;
+		};
+		F7A524AA6DD9F125EB08C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.net-snix.DropZone";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BF40729C7864BEBE0628A23 /* Build configuration list for PBXProject "DropZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A261DE7A3B1166D559E309CD /* Debug */,
+				88EDF4490E5D92020D3C9AC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E554661FC9D0F847C108563D /* Build configuration list for PBXNativeTarget "DropZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7A524AA6DD9F125EB08C771 /* Debug */,
+				42B99294B1C557D18B912B31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 812B14C1A3060A3A81AF9704 /* Project object */;
+}

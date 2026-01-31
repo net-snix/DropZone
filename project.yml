@@ -1,0 +1,25 @@
+name: DropZone
+options:
+  bundleIdPrefix: com.net-snix
+  deploymentTarget:
+    macOS: "26.0"
+settings:
+  base:
+    MARKETING_VERSION: 0.1.0
+    CURRENT_PROJECT_VERSION: 1
+    SWIFT_VERSION: 5.10
+
+targets:
+  DropZone:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+    resources:
+      - path: Resources
+    info:
+      path: Sources/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.net-snix.DropZone
+        MACOSX_DEPLOYMENT_TARGET: 26.0

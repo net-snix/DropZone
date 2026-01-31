@@ -1,0 +1,169 @@
+{
+  "" : {
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZone-primary.dia",
+    "emit-module-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZone-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZone-primary-emit-module.dia",
+    "pch" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZone-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZone-primary.swiftdeps"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/App/ActiveWindowLocator.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ActiveWindowLocator~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/App/AppDelegate.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/App/DragMonitor.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragMonitor~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/App/DropOverlayController.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayController~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/App/DropZoneApp.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropZoneApp~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Models/DropOverlayState.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropOverlayState~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Models/ZoneItem.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItem~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Models/ZoneStore.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneStore~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/DragDelegateRetainer.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DragDelegateRetainer~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/Formatters.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Formatters~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/NoiseTexture.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/NoiseTexture~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/Palette.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/Palette~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/PillButtonStyle.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/PillButtonStyle~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Utils/ZoneItemFilePromiseDelegate.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/ZoneItemFilePromiseDelegate~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Views/DropBoxItemRow.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxItemRow~partial.swiftmodule"
+  },
+  "/Users/espenmac/Code/DropZone/Sources/Views/DropBoxView.swift" : {
+    "const-values" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.swiftconstvalues",
+    "dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.d",
+    "diagnostics" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.dia",
+    "index-unit-output-path" : "/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.o",
+    "llvm-bc" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.bc",
+    "object" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.o",
+    "swift-dependencies" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView.swiftdeps",
+    "swiftmodule" : "/Users/espenmac/Code/DropZone/build/DropZone.build/Debug/DropZone.build/Objects-normal/arm64/DropBoxView~partial.swiftmodule"
+  }
+}
