@@ -4,7 +4,8 @@ Floating drop target for macOS. Stash files while you work, then drag them back 
 
 ## Features
 - Overlay appears near the cursor during a file drag
-- Trigger: during a file drag, hold Shift for ~0.25s or shake the cursor.
+- Trigger: during a file drag, hold Shift for ~0.25s or shake the cursor
+- Manual toggle: double-tap Shift (when not dragging)
 - Drop to stash; items keep the panel pinned while non-empty
 - Drag items out; Shift-drag to export everything at once
 - Instant actions: New Folder (create + move), Move To, Reveal in Finder

@@ -6,20 +6,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let logger = Logger(subsystem: "com.net-snix.DropZone", category: "app")
     private let dragMonitor = DragMonitor()
     private lazy var overlayController = DropOverlayController(store: ZoneStore.shared)
-    private let hotKeyManager = GlobalHotKeyManager()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         logger.info("App launch")
         ZoneStore.shared.reset()
         bindDragMonitor()
         dragMonitor.start()
-        registerHotKeys()
-        hotKeyManager.start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
         dragMonitor.stop()
-        hotKeyManager.stop()
         logger.info("App terminate")
     }
 
@@ -46,22 +42,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.overlayController.triggerShiftHold(at: location)
             }
         }
+        dragMonitor.onShiftDoubleTap = { [weak self] location in
+            Task { @MainActor in
+                self?.overlayController.toggleManual(at: location)
+            }
+        }
         dragMonitor.onDragEnd = { [weak self] in
             Task { @MainActor in
                 self?.overlayController.endDrag()
-            }
-        }
-    }
-
-    private func registerHotKeys() {
-        hotKeyManager.register(
-            id: 1,
-            keyCode: GlobalHotKeyManager.defaultToggleKeyCode,
-            modifiers: GlobalHotKeyManager.defaultToggleModifiers
-        ) { [weak self] in
-            Task { @MainActor in
-                guard let self else { return }
-                self.overlayController.toggleManual(at: NSEvent.mouseLocation)
             }
         }
     }

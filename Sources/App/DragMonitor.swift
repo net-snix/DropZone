@@ -5,6 +5,7 @@ final class DragMonitor {
     var onDragEnd: (() -> Void)?
     var onShake: ((CGPoint) -> Void)?
     var onShiftHold: ((CGPoint) -> Void)?
+    var onShiftDoubleTap: ((CGPoint) -> Void)?
 
     private var flagsMonitor: Any?
     private var dragMonitor: Any?
@@ -17,6 +18,8 @@ final class DragMonitor {
     private var isFileDrag = false
     private let shakeDetector = ShakeDetector()
     private let shiftHoldDelay: TimeInterval = 0.25
+    private let shiftDoubleTapInterval: TimeInterval = 0.35
+    private var lastShiftTapTimestamp: TimeInterval?
 
     func start() {
         flagsMonitor = NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
@@ -56,6 +59,7 @@ final class DragMonitor {
             isFileDrag = false
         }
         updateShiftHoldTimer(at: NSEvent.mouseLocation)
+        handleShiftDoubleTap(event: event, shiftPressed: shiftPressed)
         onInputUpdate?(NSEvent.mouseLocation, shiftDown, isDragging, isFileDrag, shiftPressed)
     }
 
@@ -117,6 +121,24 @@ final class DragMonitor {
         } else {
             shiftHoldTimer?.invalidate()
             shiftHoldTimer = nil
+        }
+    }
+
+    private func handleShiftDoubleTap(event: NSEvent, shiftPressed: Bool) {
+        guard shiftPressed else { return }
+        guard !isDragging else { return }
+        guard NSEvent.pressedMouseButtons == 0 else { return }
+        let modifiers = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        guard modifiers == [.shift] else {
+            lastShiftTapTimestamp = nil
+            return
+        }
+        let now = event.timestamp
+        if let last = lastShiftTapTimestamp, now - last <= shiftDoubleTapInterval {
+            lastShiftTapTimestamp = nil
+            onShiftDoubleTap?(NSEvent.mouseLocation)
+        } else {
+            lastShiftTapTimestamp = now
         }
     }
 
