@@ -215,54 +215,172 @@ final class DropOverlayController {
     private func positionPanel(near location: CGPoint) {
         let size = panel.frame.size
         let margin: CGFloat = 12
+        let maxDistance: CGFloat = 360
 
-        if let anchor = ActiveWindowLocator.frontmostWindowAnchor() {
-            let bounds = anchor.screen.visibleFrame
-            if let frame = frameOutsideWindow(anchor.frame, panelSize: size, bounds: bounds, margin: margin) {
-                panel.setFrame(frame, display: true)
+        guard let cursorScreen = NSScreen.screens.first(where: { $0.frame.contains(location) }) ?? NSScreen.main else {
+            return
+        }
+
+        if let anchor = ActiveWindowLocator.frontmostWindowAnchor(),
+           anchor.screen == cursorScreen {
+            let bounds = cursorScreen.visibleFrame
+            let windowArea = anchor.frame.width * anchor.frame.height
+            let screenArea = bounds.width * bounds.height
+            let isLargeWindow = windowArea >= screenArea * 0.66
+
+            let outside = outsideWindowCandidates(
+                windowFrame: anchor.frame,
+                panelSize: size,
+                bounds: bounds,
+                margin: margin,
+                cursor: location
+            )
+
+            if let above = outside.aboveCandidate, above.distance <= maxDistance {
+                panel.setFrame(above.frame, display: true)
+                return
+            }
+
+            if let bestWithin = outside.candidates
+                .filter({ $0.distance <= maxDistance })
+                .min(by: { $0.distance < $1.distance }) {
+                panel.setFrame(bestWithin.frame, display: true)
+                return
+            }
+
+            if let bestOverall = outside.candidates.min(by: { $0.distance < $1.distance }),
+               bestOverall.distance > maxDistance,
+               let inside = frameNearCursorAvoidingPoint(
+                   location: location,
+                   panelSize: size,
+                   bounds: cursorScreen.visibleFrame,
+                   margin: margin
+               ) {
+                panel.setFrame(inside, display: true)
+                return
+            }
+
+            if isLargeWindow, let inside = frameNearCursorAvoidingPoint(
+                location: location,
+                panelSize: size,
+                bounds: cursorScreen.visibleFrame,
+                margin: margin
+            ) {
+                panel.setFrame(inside, display: true)
                 return
             }
         }
 
-        guard let screen = NSScreen.screens.first(where: { $0.frame.contains(location) }) ?? NSScreen.main else {
-            return
-        }
+        let fallbackBounds = cursorScreen.visibleFrame
+        let fallback = frameNearCursorAvoidingPoint(
+            location: location,
+            panelSize: size,
+            bounds: fallbackBounds,
+            margin: margin
+        ) ?? defaultCursorFrame(location: location, panelSize: size, bounds: fallbackBounds, margin: margin)
 
-        var origin = CGPoint(x: location.x - size.width * 0.5, y: location.y - size.height - 24)
-        let bounds = screen.visibleFrame
-        origin.x = min(max(origin.x, bounds.minX + margin), bounds.maxX - size.width - margin)
-        origin.y = min(max(origin.y, bounds.minY + margin), bounds.maxY - size.height - margin)
-
-        let frame = NSRect(origin: origin, size: size)
-        panel.setFrame(frame, display: true)
+        panel.setFrame(fallback, display: true)
     }
 
-    private func frameOutsideWindow(_ windowFrame: CGRect, panelSize: CGSize, bounds: CGRect, margin: CGFloat) -> CGRect? {
+    private struct PanelCandidate {
+        let frame: CGRect
+        let distance: CGFloat
+    }
+
+    private struct OutsideCandidates {
+        let candidates: [PanelCandidate]
+        let aboveCandidate: PanelCandidate?
+    }
+
+    private func outsideWindowCandidates(
+        windowFrame: CGRect,
+        panelSize: CGSize,
+        bounds: CGRect,
+        margin: CGFloat,
+        cursor: CGPoint
+    ) -> OutsideCandidates {
+        var candidates: [PanelCandidate] = []
+        var aboveCandidate: PanelCandidate?
+
+        let aboveY = windowFrame.maxY + margin
+        if aboveY + panelSize.height <= bounds.maxY - margin {
+            let x = clampedX(cursor.x - panelSize.width * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
+            let frame = CGRect(origin: CGPoint(x: x, y: aboveY), size: panelSize)
+            aboveCandidate = PanelCandidate(frame: frame, distance: distance(from: cursor, to: frame))
+            if let aboveCandidate {
+                candidates.append(aboveCandidate)
+            }
+        }
+
         let rightX = windowFrame.maxX + margin
         if rightX + panelSize.width <= bounds.maxX - margin {
-            let y = clampedY(windowFrame.midY - panelSize.height * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
-            return CGRect(origin: CGPoint(x: rightX, y: y), size: panelSize)
+            let y = clampedY(cursor.y - panelSize.height * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
+            let frame = CGRect(origin: CGPoint(x: rightX, y: y), size: panelSize)
+            candidates.append(PanelCandidate(frame: frame, distance: distance(from: cursor, to: frame)))
         }
 
         let leftX = windowFrame.minX - panelSize.width - margin
         if leftX >= bounds.minX + margin {
-            let y = clampedY(windowFrame.midY - panelSize.height * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
-            return CGRect(origin: CGPoint(x: leftX, y: y), size: panelSize)
-        }
-
-        let aboveY = windowFrame.maxY + margin
-        if aboveY + panelSize.height <= bounds.maxY - margin {
-            let x = clampedX(windowFrame.midX - panelSize.width * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
-            return CGRect(origin: CGPoint(x: x, y: aboveY), size: panelSize)
+            let y = clampedY(cursor.y - panelSize.height * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
+            let frame = CGRect(origin: CGPoint(x: leftX, y: y), size: panelSize)
+            candidates.append(PanelCandidate(frame: frame, distance: distance(from: cursor, to: frame)))
         }
 
         let belowY = windowFrame.minY - panelSize.height - margin
         if belowY >= bounds.minY + margin {
-            let x = clampedX(windowFrame.midX - panelSize.width * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
-            return CGRect(origin: CGPoint(x: x, y: belowY), size: panelSize)
+            let x = clampedX(cursor.x - panelSize.width * 0.5, bounds: bounds, panelSize: panelSize, margin: margin)
+            let frame = CGRect(origin: CGPoint(x: x, y: belowY), size: panelSize)
+            candidates.append(PanelCandidate(frame: frame, distance: distance(from: cursor, to: frame)))
         }
 
-        return nil
+        return OutsideCandidates(candidates: candidates, aboveCandidate: aboveCandidate)
+    }
+
+    private func frameNearCursorAvoidingPoint(
+        location: CGPoint,
+        panelSize: CGSize,
+        bounds: CGRect,
+        margin: CGFloat
+    ) -> CGRect? {
+        let offset: CGFloat = 16
+        let candidates = [
+            CGRect(origin: CGPoint(x: location.x - panelSize.width * 0.5, y: location.y + offset), size: panelSize),
+            CGRect(origin: CGPoint(x: location.x - panelSize.width * 0.5, y: location.y - panelSize.height - offset), size: panelSize),
+            CGRect(origin: CGPoint(x: location.x + offset, y: location.y - panelSize.height * 0.5), size: panelSize),
+            CGRect(origin: CGPoint(x: location.x - panelSize.width - offset, y: location.y - panelSize.height * 0.5), size: panelSize)
+        ]
+
+        var best: PanelCandidate?
+        for var frame in candidates {
+            frame.origin.x = clampedX(frame.origin.x, bounds: bounds, panelSize: panelSize, margin: margin)
+            frame.origin.y = clampedY(frame.origin.y, bounds: bounds, panelSize: panelSize, margin: margin)
+            if frame.contains(location) {
+                continue
+            }
+            let distance = distance(from: location, to: frame)
+            if best == nil || distance < best!.distance {
+                best = PanelCandidate(frame: frame, distance: distance)
+            }
+        }
+        return best?.frame
+    }
+
+    private func defaultCursorFrame(
+        location: CGPoint,
+        panelSize: CGSize,
+        bounds: CGRect,
+        margin: CGFloat
+    ) -> CGRect {
+        var origin = CGPoint(x: location.x - panelSize.width * 0.5, y: location.y - panelSize.height - 24)
+        origin.x = clampedX(origin.x, bounds: bounds, panelSize: panelSize, margin: margin)
+        origin.y = clampedY(origin.y, bounds: bounds, panelSize: panelSize, margin: margin)
+        return CGRect(origin: origin, size: panelSize)
+    }
+
+    private func distance(from point: CGPoint, to rect: CGRect) -> CGFloat {
+        let dx = max(max(rect.minX - point.x, point.x - rect.maxX), 0)
+        let dy = max(max(rect.minY - point.y, point.y - rect.maxY), 0)
+        return hypot(dx, dy)
     }
 
     private func clampedX(_ value: CGFloat, bounds: CGRect, panelSize: CGSize, margin: CGFloat) -> CGFloat {
