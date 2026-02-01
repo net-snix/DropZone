@@ -70,10 +70,6 @@ struct DropBoxView: View {
                     .foregroundStyle(Palette.textPrimary)
             }
 
-            if state.isTargeted {
-                InstantActionBar()
-                    .padding(.top, 6)
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
