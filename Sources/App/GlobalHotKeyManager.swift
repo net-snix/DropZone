@@ -82,6 +82,6 @@ final class GlobalHotKeyManager {
         }
     }
 
-    static let defaultToggleKeyCode: UInt32 = UInt32(kVK_Space)
-    static let defaultToggleModifiers: UInt32 = UInt32(controlKey | optionKey)
+    static let defaultToggleKeyCode: UInt32 = UInt32(kVK_Shift)
+    static let defaultToggleModifiers: UInt32 = 0
 }
