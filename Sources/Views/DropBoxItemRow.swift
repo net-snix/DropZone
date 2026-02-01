@@ -6,36 +6,53 @@ struct DropBoxItemRow: NSViewRepresentable {
     let item: ZoneItem
     @ObservedObject var store: ZoneStore
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
     func makeNSView(context: Context) -> DragItemHostingView {
-        let view = DragItemHostingView(rootView: DropBoxItemRowContent(item: item, store: store), store: store)
+        let view = DragItemHostingView(
+            rootView: DropBoxItemRowContent(item: item, store: store, dragState: context.coordinator.dragState),
+            store: store,
+            dragState: context.coordinator.dragState
+        )
         view.item = item
         return view
     }
 
     func updateNSView(_ nsView: DragItemHostingView, context: Context) {
-        nsView.rootView = DropBoxItemRowContent(item: item, store: store)
+        nsView.rootView = DropBoxItemRowContent(item: item, store: store, dragState: context.coordinator.dragState)
         nsView.item = item
         nsView.store = store
+        nsView.dragState = context.coordinator.dragState
         nsView.invalidateIntrinsicContentSize()
+    }
+
+    final class Coordinator {
+        let dragState = DragVisualState()
     }
 
     final class DragItemHostingView: NSView, NSDraggingSource {
         var item: ZoneItem?
         var store: ZoneStore?
+        var dragState: DragVisualState
         private var mouseDownLocation: NSPoint?
         private var isDragging = false
         private var originalMovableBackground = false
         private let hostingView: NSHostingView<DropBoxItemRowContent>
         private var activeDragDelegates: [AnyObject] = []
+        private var cursorPreviewPanel: NSPanel?
+        private var cursorPreviewView: NSImageView?
 
         var rootView: DropBoxItemRowContent {
             get { hostingView.rootView }
             set { hostingView.rootView = newValue }
         }
 
-        init(rootView: DropBoxItemRowContent, store: ZoneStore) {
+        init(rootView: DropBoxItemRowContent, store: ZoneStore, dragState: DragVisualState) {
             hostingView = NSHostingView(rootView: rootView)
             self.store = store
+            self.dragState = dragState
             super.init(frame: .zero)
             hostingView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(hostingView)
@@ -68,6 +85,13 @@ struct DropBoxItemRow: NSViewRepresentable {
             self
         }
 
+        override func viewWillMove(toSuperview newSuperview: NSView?) {
+            if newSuperview == nil {
+                hideCursorPreview()
+            }
+            super.viewWillMove(toSuperview: newSuperview)
+        }
+
         override func mouseDown(with event: NSEvent) {
             mouseDownLocation = event.locationInWindow
             isDragging = false
@@ -97,6 +121,7 @@ struct DropBoxItemRow: NSViewRepresentable {
 
         private func beginDragging(with event: NSEvent) {
             guard let item else { return }
+            dragState.beginDrag()
             let itemsToDrag: [ZoneItem]
             if event.modifierFlags.contains(.shift), let store = self.store, store.items.count > 1 {
                 itemsToDrag = store.items
@@ -105,6 +130,7 @@ struct DropBoxItemRow: NSViewRepresentable {
             }
             activeDragDelegates.removeAll()
             let dragImage = makeDragImage(for: itemsToDrag)
+            showCursorPreview(at: event, baseImage: dragImage)
             let localPoint = convert(event.locationInWindow, from: nil)
             let dragFrame = NSRect(
                 x: localPoint.x - dragImage.size.width / 2,
@@ -145,6 +171,10 @@ struct DropBoxItemRow: NSViewRepresentable {
             .move
         }
 
+        func draggingSession(_ session: NSDraggingSession, movedTo screenPoint: NSPoint) {
+            updateCursorPreview(at: screenPoint)
+        }
+
         func ignoreModifierKeys(for session: NSDraggingSession) -> Bool {
             true
         }
@@ -154,13 +184,15 @@ struct DropBoxItemRow: NSViewRepresentable {
                 window.isMovableByWindowBackground = originalMovableBackground
             }
             activeDragDelegates.removeAll()
+            hideCursorPreview()
+            dragState.endDrag()
         }
 
         private func makeDragImage(for items: [ZoneItem]) -> NSImage {
             let visible = Array(items.prefix(4))
-            let iconSize = NSSize(width: 64, height: 64)
-            let offsetStep: CGFloat = 10
-            let canvasSize = NSSize(width: 120, height: 120)
+            let iconSize = NSSize(width: 48, height: 48)
+            let offsetStep: CGFloat = 8
+            let canvasSize = NSSize(width: 96, height: 96)
 
             let image = NSImage(size: canvasSize)
             image.lockFocus()
@@ -212,17 +244,116 @@ struct DropBoxItemRow: NSViewRepresentable {
             )
             badgeText.draw(at: textPoint, withAttributes: attributes)
         }
+
+        private func showCursorPreview(at event: NSEvent, baseImage: NSImage) {
+            guard cursorPreviewView == nil, let window else { return }
+            let previewImage = scaledImage(baseImage, scale: 0.7)
+            let imageView = NSImageView(image: previewImage)
+            imageView.wantsLayer = true
+            imageView.layer?.shadowColor = NSColor.black.cgColor
+            imageView.layer?.shadowOpacity = 0.18
+            imageView.layer?.shadowRadius = 6
+            imageView.layer?.shadowOffset = CGSize(width: 0, height: -2)
+            imageView.alphaValue = 0
+            let panel = makeCursorPreviewPanel(with: imageView)
+            let screenPoint = window.convertPoint(toScreen: event.locationInWindow)
+            positionCursorPreview(panel, at: screenPoint)
+            panel.orderFrontRegardless()
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 0.12
+                imageView.animator().alphaValue = 1
+            }
+            cursorPreviewPanel = panel
+            cursorPreviewView = imageView
+        }
+
+        private func updateCursorPreview(at screenPoint: NSPoint) {
+            guard let panel = cursorPreviewPanel else { return }
+            positionCursorPreview(panel, at: screenPoint)
+        }
+
+        private func positionCursorPreview(_ panel: NSPanel, at screenPoint: NSPoint) {
+            guard let size = cursorPreviewView?.image?.size else { return }
+            panel.setFrame(
+                NSRect(
+                    x: screenPoint.x - size.width / 2,
+                    y: screenPoint.y - size.height / 2,
+                    width: size.width,
+                    height: size.height
+                ),
+                display: false
+            )
+        }
+
+        private func hideCursorPreview() {
+            guard let view = cursorPreviewView else { return }
+            cursorPreviewView = nil
+            let panel = cursorPreviewPanel
+            cursorPreviewPanel = nil
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 0.1
+                view.animator().alphaValue = 0
+            } completionHandler: {
+                panel?.orderOut(nil)
+                panel?.contentView = nil
+            }
+        }
+
+        private func makeCursorPreviewPanel(with imageView: NSImageView) -> NSPanel {
+            if let panel = cursorPreviewPanel {
+                panel.contentView = imageView
+                return panel
+            }
+            let panel = NSPanel(
+                contentRect: NSRect(origin: .zero, size: imageView.image?.size ?? NSSize(width: 40, height: 40)),
+                styleMask: [.borderless, .nonactivatingPanel],
+                backing: .buffered,
+                defer: true
+            )
+            panel.isOpaque = false
+            panel.backgroundColor = .clear
+            panel.hasShadow = false
+            panel.level = .statusBar
+            panel.isFloatingPanel = true
+            panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+            panel.hidesOnDeactivate = false
+            panel.ignoresMouseEvents = true
+            panel.isReleasedWhenClosed = false
+            panel.contentView = imageView
+            return panel
+        }
+
+        private func scaledImage(_ image: NSImage, scale: CGFloat) -> NSImage {
+            let targetSize = NSSize(width: image.size.width * scale, height: image.size.height * scale)
+            let scaled = NSImage(size: targetSize)
+            scaled.lockFocus()
+            image.draw(in: NSRect(origin: .zero, size: targetSize), from: .zero, operation: .sourceOver, fraction: 1)
+            scaled.unlockFocus()
+            return scaled
+        }
     }
 }
 
 struct DropBoxItemRowContent: View {
     let item: ZoneItem
     @ObservedObject var store: ZoneStore
+    @ObservedObject var dragState: DragVisualState
+    @State private var cachedIcon: NSImage?
 
     var body: some View {
+        let lift = dragState.liftProgress
+
+        card
+            .scaleEffect(1 - 0.03 * lift)
+            .opacity(1 - 0.25 * Double(lift))
+        .onAppear(perform: loadIcon)
+        .onChange(of: item.originalPath) { loadIcon() }
+    }
+
+    private var card: some View {
         VStack(spacing: 8) {
             fileIcon
-                .frame(width: 56, height: 56)
+                .frame(width: 44, height: 44)
 
             Text(item.fileName)
                 .font(.system(size: 11, weight: .semibold, design: .rounded))
@@ -242,18 +373,53 @@ struct DropBoxItemRowContent: View {
     }
 
     private var fileIcon: some View {
-        let image = resolvedIcon()
+        let image = cachedIcon ?? fallbackIcon
         return Image(nsImage: image)
             .resizable()
             .scaledToFit()
     }
 
-    private func resolvedIcon() -> NSImage {
+    private var fallbackIcon: NSImage {
+        NSImage(systemSymbolName: "doc.fill", accessibilityDescription: nil) ?? NSImage()
+    }
+
+    private func loadIcon() {
         if let url = store.resolvedURL(for: item) {
             let icon = NSWorkspace.shared.icon(forFile: url.path)
-            icon.size = NSSize(width: 56, height: 56)
-            return icon
+            icon.size = NSSize(width: 44, height: 44)
+            cachedIcon = icon
+            return
         }
-        return NSImage(systemSymbolName: "doc.fill", accessibilityDescription: nil) ?? NSImage()
+        cachedIcon = fallbackIcon
+    }
+}
+
+final class DragVisualState: ObservableObject {
+    @Published var isDragging = false
+    @Published var liftProgress: CGFloat = 0
+    private var pendingEnd: DispatchWorkItem?
+
+    func beginDrag() {
+        pendingEnd?.cancel()
+        pendingEnd = nil
+        if !isDragging {
+            isDragging = true
+        }
+        withAnimation(.easeOut(duration: 0.18)) {
+            liftProgress = 1
+        }
+    }
+
+    func endDrag() {
+        withAnimation(.easeInOut(duration: 0.18)) {
+            liftProgress = 0
+        }
+        let workItem = DispatchWorkItem { [weak self] in
+            guard let self else { return }
+            self.isDragging = false
+        }
+        pendingEnd?.cancel()
+        pendingEnd = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22, execute: workItem)
     }
 }
