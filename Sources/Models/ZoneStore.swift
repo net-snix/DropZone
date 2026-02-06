@@ -5,6 +5,8 @@ import os
 @MainActor
 final class ZoneStore: ObservableObject {
     static let shared = ZoneStore()
+    nonisolated static let directoryScanEntryLimit = 10_000
+    nonisolated static let directoryScanByteLimit: Int64 = 5 * 1024 * 1024 * 1024
 
     @Published private(set) var items: [ZoneItem] = []
 
@@ -163,7 +165,7 @@ final class ZoneStore: ObservableObject {
                 continue
             }
 
-            let size = fileSize(at: url)
+            let size = estimatedFileSize(at: url, logger: logger)
             let item = ZoneItem(
                 id: UUID(),
                 bookmarkData: bookmarkData,
@@ -177,24 +179,66 @@ final class ZoneStore: ObservableObject {
         return items
     }
 
-    private nonisolated static func fileSize(at url: URL) -> Int64 {
-        let fileManager = FileManager.default
+    nonisolated static func estimatedFileSize(
+        at url: URL,
+        maxDirectoryEntries: Int = directoryScanEntryLimit,
+        maxDirectoryBytes: Int64 = directoryScanByteLimit,
+        fileManager: FileManager = .default,
+        logger: Logger? = nil
+    ) -> Int64 {
         let keys: Set<URLResourceKey> = [.isDirectoryKey, .fileSizeKey]
         guard let values = try? url.resourceValues(forKeys: keys) else { return 0 }
         if values.isDirectory == true {
-            return directorySize(at: url, fileManager: fileManager)
+            return directorySize(
+                at: url,
+                fileManager: fileManager,
+                maxEntries: maxDirectoryEntries,
+                maxBytes: maxDirectoryBytes,
+                logger: logger
+            )
         }
         return Int64(values.fileSize ?? 0)
     }
 
-    private nonisolated static func directorySize(at url: URL, fileManager: FileManager) -> Int64 {
-        guard let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey]) else {
+    private nonisolated static func directorySize(
+        at url: URL,
+        fileManager: FileManager,
+        maxEntries: Int,
+        maxBytes: Int64,
+        logger: Logger?
+    ) -> Int64 {
+        guard maxEntries > 0, maxBytes > 0 else { return 0 }
+        let resourceKeys: Set<URLResourceKey> = [.isRegularFileKey, .fileSizeKey]
+        let options: FileManager.DirectoryEnumerationOptions = [.skipsPackageDescendants]
+        guard let enumerator = fileManager.enumerator(
+            at: url,
+            includingPropertiesForKeys: Array(resourceKeys),
+            options: options
+        ) else {
             return 0
         }
+
         var total: Int64 = 0
+        var scannedEntries = 0
         for case let fileURL as URL in enumerator {
-            if let size = try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize {
-                total += Int64(size)
+            if scannedEntries >= maxEntries || total >= maxBytes {
+                logger?.debug("Directory size scan capped at \(url.path, privacy: .public)")
+                break
+            }
+
+            guard let values = try? fileURL.resourceValues(forKeys: resourceKeys),
+                  values.isRegularFile == true,
+                  let fileSize = values.fileSize,
+                  fileSize > 0 else {
+                continue
+            }
+
+            scannedEntries += 1
+            total += Int64(fileSize)
+            if total > maxBytes {
+                total = maxBytes
+                logger?.debug("Directory size byte cap reached at \(url.path, privacy: .public)")
+                break
             }
         }
         return total

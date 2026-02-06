@@ -12,9 +12,11 @@ enum DragPasteboardReader {
 
             var urls: [URL] = []
             for await url in group {
-                if let url { urls.append(url) }
+                if let url {
+                    urls.append(url)
+                }
             }
-            return urls
+            return validatedFileURLs(urls)
         }
     }
 
@@ -23,18 +25,32 @@ enum DragPasteboardReader {
         let options: [NSPasteboard.ReadingOptionKey: Any] = [
             .urlReadingFileURLsOnly: true
         ]
-        return (pasteboard.readObjects(forClasses: [NSURL.self], options: options) as? [URL]) ?? []
+        let urls = (pasteboard.readObjects(forClasses: [NSURL.self], options: options) as? [URL]) ?? []
+        return validatedFileURLs(urls)
+    }
+
+    static func validatedFileURLs(_ urls: [URL]) -> [URL] {
+        var seenPaths = Set<String>()
+        var validURLs: [URL] = []
+        for url in urls {
+            guard let validURL = validatedFileURL(url) else { continue }
+            let key = validURL.path
+            if seenPaths.insert(key).inserted {
+                validURLs.append(validURL)
+            }
+        }
+        return validURLs
     }
 
     private static func loadFileURL(from provider: NSItemProvider) async -> URL? {
         if provider.hasItemConformingToTypeIdentifier(UTType.fileURL.identifier) {
             if let url = await loadURL(from: provider, type: UTType.fileURL.identifier) {
-                return url
+                return validatedFileURL(url)
             }
         }
         if provider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
-            if let url = await loadURL(from: provider, type: UTType.url.identifier), url.isFileURL {
-                return url
+            if let url = await loadURL(from: provider, type: UTType.url.identifier) {
+                return validatedFileURL(url)
             }
         }
         return nil
@@ -56,12 +72,17 @@ enum DragPasteboardReader {
                     continuation.resume(returning: url)
                     return
                 }
-                if let path = item as? String {
-                    continuation.resume(returning: URL(fileURLWithPath: path))
-                    return
-                }
                 continuation.resume(returning: nil)
             }
         }
+    }
+
+    private static func validatedFileURL(_ url: URL) -> URL? {
+        guard url.isFileURL else { return nil }
+        let standardized = url.standardizedFileURL
+        guard FileManager.default.fileExists(atPath: standardized.path) else {
+            return nil
+        }
+        return standardized
     }
 }

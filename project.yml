@@ -19,7 +19,19 @@ targets:
       - path: Resources
     info:
       path: Sources/Info.plist
+      properties:
+        LSUIElement: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.net-snix.DropZone
         MACOSX_DEPLOYMENT_TARGET: 26.0
+  DropZoneTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: DropZone
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
